@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import './Landing.css'
 
 class Landing extends Component{
     render(){
         return(
-            <div>
+            <div className="landing-wrapper">
                 This is the Landing...
             </div>
         )

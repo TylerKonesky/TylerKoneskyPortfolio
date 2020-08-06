@@ -1,7 +1,13 @@
+/* #242424 - Dark Grey
+#FED766 - Yellowish
+#009FB7 - turqouise
+#6969773 - less dark grey
+#EFF1F3 - light-gray */
+
 .header-container{
     display: flex;
     flex-direction: row;
-    background-color: lightgray;
+    background-color: #009FB7;
     height: 40px;
     border-radius: 1px solid gray;
     /* box-shadow: 0px 5px 5px 0px blue; */
@@ -10,7 +16,7 @@
 }
 
 .header-left-text{
-    color: red;
+    color: #242424;
     font-size: 20px;
     align-self: center; 
 }

@@ -1,7 +1,11 @@
 .landing-wrapper{
     margin-top: 0px;
-    margin-left: 400px;
-    margin-right: 400px;
-    background-color: #f8f8f8;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    background-color: #EFF1F3;
+    opacity: .75;
     height: 100vh;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: -5px 5px 5px black;
 }

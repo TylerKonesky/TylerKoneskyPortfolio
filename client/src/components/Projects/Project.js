@@ -10,17 +10,17 @@ class Project extends Component{
     render(){
         return(
             <div className="project-wrapper landing-wrapper">   
-                <h4 className="project-title">Title</h4>
+                <h4 className="project-title">{this.props.title}</h4>
                 <div className="project-body-wrapper">
 
                     <div className="project-images">
                         <div className="main-image">
-                            <div>IMAGE</div>
+                            <img src={this.props.image1}></img>
                         </div>
                         <div className="sub-images">
-                            <div className="sub-image">1</div>
-                            <div className="sub-image">2</div>
-                            <div className="sub-image">3</div>
+                            <img src={this.props.image2}></img>
+                            <img src={this.props.image3}></img>
+                            <img src={this.props.image1}></img>
                         </div>
                     </div>
 

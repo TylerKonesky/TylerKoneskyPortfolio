@@ -7,7 +7,7 @@
 .header-container{
     display: flex;
     flex-direction: row;
-    background-color: #009FB7;
+    background-image: linear-gradient(#EFF1F3, #009FB7);
     height: 40px;
     border-radius: 1px solid gray;
     /* box-shadow: 0px 5px 5px 0px blue; */

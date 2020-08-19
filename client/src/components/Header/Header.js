@@ -1,23 +1,20 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import './Header.css';
 
 class Header extends Component{
     render(){
         return(
-            <div className="header-container">
-                <div className="header-left"> 
-                    <div className="header-left-text">
-                        Tyler Konesky
-                    </div>
+            <nav className="header-wrapper">
+                <div className="nav-wrapper light-blue">
+                    <a className="center brand-logo"><Link to="/">Tyler Konesky</Link></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><Link to="/pageAdmin">Home</Link></li>
+                        <li><Link to="/pageAdmin">Home</Link></li>
+                        <li><Link to="/pageAdmin">Home</Link></li>
+                    </ul>
                 </div>
-                <div className="header-right">
-                    <div className="header-right-links">
-                        <a href="/">Home</a>
-                        <a href="/">Home</a>
-                        <a href="/">Home</a>
-                    </div>
-                </div>
-            </div>
+            </nav>
         )
     }
 }

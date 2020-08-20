@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Card from '../Cards/Card';
 import './Project.css';
 
 class Project extends Component{
@@ -10,7 +11,8 @@ class Project extends Component{
     render(){
         return(
             <div className="project-wrapper landing-wrapper">   
-                <h4 className="project-title">{this.props.title}</h4>
+            <Card />
+                {/* <h4 className="project-title">{this.props.title}</h4>
                 <div className="project-body-wrapper">
 
                     <div className="project-images">
@@ -38,7 +40,7 @@ class Project extends Component{
                         </div>
                     </div>
 
-                </div>
+                </div> */}
                 
 
             </div>

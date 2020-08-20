@@ -8,7 +8,7 @@ class Header extends Component{
             <nav className="header-wrapper">
                 <div className="nav-wrapper light-blue">
                     <a className="center brand-logo"><Link to="/">Tyler Konesky</Link></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to="/pageAdmin">Home</Link></li>
                         <li><Link to="/pageAdmin">Home</Link></li>
                         <li><Link to="/pageAdmin">Home</Link></li>

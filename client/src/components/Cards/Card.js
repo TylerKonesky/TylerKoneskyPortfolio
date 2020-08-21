@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import image1 from '../../images/rox-1.png'
+import image1 from '../../images/rox-main.png'
 
 class Card extends Component{
     constructor(props){
@@ -10,7 +10,7 @@ class Card extends Component{
         return(
             <div className="row">
                 <div className="col s12 m7">
-                    <div className="card">
+                    <div className="col s12 offset-s4 card">
                         <div className="card-image waves-effect waves-block waves-light">
                             <img className="activator" src={image1}></img>
                         </div>

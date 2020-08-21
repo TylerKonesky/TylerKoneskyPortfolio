@@ -15,7 +15,7 @@ class Landing extends Component{
                 <About />
                 <Skills />
                 <Project title="Roxabillys" image1={roxmain} image2={rox1} image3={rox2}/>
-                <Project />
+               
             </div>
         )
     }

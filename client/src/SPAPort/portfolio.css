@@ -1,0 +1,55 @@
+body{
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    letter-spacing: 1px;;
+}
+
+.image-slider button{
+    z-index: 10;
+}
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 5;
+    background-color: rgba(0,0,0, 0.8);
+}
+
+.title-message{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 50%;
+    z-index: 6;
+    text-align: center;
+    margin-top: -125px;
+}
+
+.heading p{
+    color: #fff;
+    text-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+    font-weight: 100;
+    letter-spacing: 7px;
+}
+
+.heading .main {
+    font-size: 50px;
+}
+
+.heading .sub {
+    font-size: 23px;
+}
+
+.section{
+    padding: 100px 0;
+}
+
+.about-image{
+    max-width: 100%;
+}
+
+.skills-section{
+    background-color: red;
+    color: #fff;
+}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import image1 from '../../images/rox-main.png'
+import image1 from '../../images/rox-main.png';
 
 class Card extends Component{
     constructor(props){

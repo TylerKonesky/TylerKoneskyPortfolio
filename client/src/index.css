@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./images/clouds.jpg");
-  background-repeat: no-repeat;
+  /* background-image: url("./images/clouds.jpg"); */
+  /* background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  height: 100vh; */
 
 }
 

@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
 import CountUp from 'react-countup';
 import VisabilitySensor from 'react-visibility-sensor';
-import {Carousel} from 'react-responsive-carousel';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCoffee, faSearch, faLink} from '@fortawesome/free-solid-svg-icons';
+import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 import SimpleImageSlider from 'react-simple-image-slider';
 
 import Image1 from '../images/binary.jpg';
-import Image2 from '../images/binary2.jpg';
-import Image3 from '../images/computer.jpg';
-import Image4 from '../images/keyboard.jpg';
 import ProfilePic from '../images/atlanta.jpg';
 import Rox1 from '../images/rox-main.png';
 import Acousana from '../images/Acousana.png';
@@ -25,16 +21,13 @@ class Portfolio extends Component{
         this.state = {
             images: [
                 {url: Image1},
-                {url: Image2},
-                {url: Image3},
-                {url: Image4},
             ],
             typed: '',
             viewPortEntered: false,
             filter: 'All',
             projects: [
                 {   technologies: 'React, Javascript, NodeJS, Express, MongoDB, Mongoose',
-                    description: 'Contracted to work on various components including CSS/Styling, Google Maps, STMP Servers. Fully Mobile responsive.',
+                    description: 'Contracted to work on various components including CSS/Styling, Google Maps, SMTP Servers. Fully Mobile responsive.',
                     image: Acousana,
                     github: '',
                     host: 'https://acousana.com',
@@ -56,12 +49,7 @@ class Portfolio extends Component{
                 },
                 
                 
-                {   technologies: 'React, Javascript, NodeJS, Express, MongoDB, Mongoose',
-                    image: Rox1,
-                    github: '',
-                    host: '',
-                    title: 'Portfolio!!'
-                },
+                
             ], 
             skills: [
                 {type: 'Language', skill: "Javascript", proficiency: 'Advanced'},
@@ -122,22 +110,22 @@ class Portfolio extends Component{
                             <img src={project.image}/>
                         </div>
                         <div className="content-wrapper">
-                            <div className="project-links">
-                                {project.github !== '' ? <a href={project.github}>Github</a> : null}
-                                {project.host !== '' ? <a href={project.host}>URL</a> : null}
-                            </div>
-                            <div className="tech text-center">
+                            
+                            <div className="tech">
                                 <h4>Technologies</h4>
                                 <div className="tech-wrapper">
                                     {project.technologies}
                                 </div>
                                 
                                 
-                                
                             </div>
                             <div className="description">
                                 <h4>Description</h4>
                                 {project.description}
+                            </div>
+                            <div className="project-links">
+                                {project.github !== '' ? <a href={project.github}>Github</a> : null}
+                                {project.host !== '' ? <a href={project.host}>URL</a> : null}
                             </div>
                         </div>
                     </div>
@@ -188,8 +176,8 @@ class Portfolio extends Component{
                             <div className="col-md-5">
                                 <img className="about-image" src={ProfilePic}/>
                             </div>
-                            <div className="col-md-7">
-                                <h4>My name is Tyler Konesky</h4>
+                            <div className="col-md-7 about-content">
+                                <h4>About Me</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -291,17 +279,9 @@ class Portfolio extends Component{
                     <div className="container">
                         <div className="row">
                             <div className="heading">
-                                <h2> PORTFOLIO </h2>
+                                <h2> Portfolio </h2>
 
                             </div>
-                            {/* <div className="filter">
-                                <ul className="filters">
-                                    <li><button className="current" onClick={() =>{ this.setState({filter: 'All'})}}>ALL</button></li>
-                                    <li><button className="" onClick={() =>{ this.setState({filter: 'React'})}}>React</button></li>
-                                    <li><button className="" onClick={() =>{ this.setState({filter: 'Node'})}}>Node</button></li>
-                                    <li><button className="" onClick={() =>{ this.setState({filter: 'JavaScript'})}}>Javascript</button></li>
-                                </ul>
-                            </div> */}
                             <div className="item-container">
                                 {this.renderProjects()}
                             </div>

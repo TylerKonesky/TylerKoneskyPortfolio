@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
+import CountUp from 'react-countup';
+import VisabilitySensor from 'react-visibility-sensor';
 import {Carousel} from 'react-responsive-carousel';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCoffee, faSearch, faLink} from '@fortawesome/free-solid-svg-icons';
 import SimpleImageSlider from 'react-simple-image-slider';
+
 import Image1 from '../images/binary.jpg';
 import Image2 from '../images/binary2.jpg';
 import Image3 from '../images/computer.jpg';
 import Image4 from '../images/keyboard.jpg';
-import ProfilePic from '../images/atlanta.jpg'
+import ProfilePic from '../images/atlanta.jpg';
+import Rox1 from '../images/rox-main.png';
+import Acousana from '../images/Acousana.png';
+import Taylorsville from '../images/Taylorsville.png'
 import Typed from 'typed.js';
 import './portfolio.css';
 
@@ -21,8 +29,61 @@ class Portfolio extends Component{
                 {url: Image3},
                 {url: Image4},
             ],
-            typed: ''
-            
+            typed: '',
+            viewPortEntered: false,
+            filter: 'All',
+            projects: [
+                {   technologies: 'React, Javascript, NodeJS, Express, MongoDB, Mongoose',
+                    description: 'Contracted to work on various components including CSS/Styling, Google Maps, STMP Servers. Fully Mobile responsive.',
+                    image: Acousana,
+                    github: '',
+                    host: 'https://acousana.com',
+                    title: 'Acousana'
+                },
+                {   technologies: 'React, Javascript, NodeJS, Express, MongoDB, Mongoose, Redux, Passport, GoogleAuth',
+                    description: 'Contracted to work build a website for the Taylorsville High School football team in the chance that the team needs to live stream their games. The website is mobile responsive and utilizes RESTful APIs, and also includes a full admin console to allow the users full capability to manage and edit the website.',
+                    image: Taylorsville,
+                    github: 'https://github.com/TylerKonesky/tvfb',
+                    host: 'https://tvillefootball.herokuapp.com/',
+                    title: 'Taylorsville Football'
+                },
+                {   technologies: 'React, Javascript, NodeJS, Express, CSS, SCSS',
+                    description: 'This project was created for a client that will be starting a food truck. It is a mobile responsive single page application made with React and SCSS', 
+                    image: Rox1,
+                    github: 'https://github.com/TylerKonesky/Roxabillys',
+                    host: '',
+                    title: 'Roxabillys'
+                },
+                
+                
+                {   technologies: 'React, Javascript, NodeJS, Express, MongoDB, Mongoose',
+                    image: Rox1,
+                    github: '',
+                    host: '',
+                    title: 'Portfolio!!'
+                },
+            ], 
+            skills: [
+                {type: 'Language', skill: "Javascript", proficiency: 'Advanced'},
+                {type: 'Language', skill: "Typescript", proficiency: 'Intermediate'},
+                {type: 'Language', skill: "HTML", proficiency: 'Advanced'},
+                {type: 'Language', skill: "CSS", proficiency: 'Intermediate'},
+                {type: 'Language', skill: "Java", proficiency: 'Beginner'},
+                {type: 'Language', skill: "Algorithms", proficiency: 'Beginner'},
+                {type: 'Framework', skill: "React", proficiency: 'Advanced'},
+                {type: 'Framework', skill: "Node", proficiency: 'Advanced'},
+                {type: 'Framework', skill: "Express", proficiency: 'Advanced'},
+                {type: 'Framework', skill: "Angular", proficiency: 'Beginner'},
+                {type: 'Framework', skill: "Redux", proficiency: 'Advanced'},
+                {type: 'Framework', skill: "Jest / Testing", proficiency: 'Intermediate'},
+                {type: 'Software', skill: "MongoDB", proficiency: 'Advanced'},
+                {type: 'Software', skill: "Mongoose", proficiency: 'Advanced'},
+                {type: 'Software', skill: "RESTful API's", proficiency: 'Advanced'},
+                {type: 'Software', skill: "VS Code", proficiency: 'Intermediate'},
+                {type: 'Software', skill: "PostGreSQL", proficiency: 'Beginner'},
+                {type: 'Software', skill: "Git", proficiency: 'Intermediate'},
+                
+            ]  
         }
     }
     componentDidMount(){
@@ -33,16 +94,85 @@ class Portfolio extends Component{
             backSpeed: 80,
             loop: true,
             showCursor: false
-            
         };
         this.typed = new Typed('.typed', options)
         
+    }
+
+    renderSkills(){
+        return this.state.skills.map(skill =>{
+            if(skill.proficiency === this.state.filter || this.state.filter === "All"){
+                return(
+                    <div className={skill.proficiency === "Advanced" ? "skills bold" : "skills"}>
+                        {skill.skill}
+                    </div>
+                )
+            }
+        })
+    }
+
+   
+
+    renderProjects(){
+        return this.state.projects.map(project =>{
+                return(
+                    <div className="project-wrapper">
+                        
+                        <div className="image-wrapper">
+                            <img src={project.image}/>
+                        </div>
+                        <div className="content-wrapper">
+                            <div className="project-links">
+                                {project.github !== '' ? <a href={project.github}>Github</a> : null}
+                                {project.host !== '' ? <a href={project.host}>URL</a> : null}
+                            </div>
+                            <div className="tech text-center">
+                                <h4>Technologies</h4>
+                                <div className="tech-wrapper">
+                                    {project.technologies}
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <div className="description">
+                                <h4>Description</h4>
+                                {project.description}
+                            </div>
+                        </div>
+                    </div>
+                )
+        })
+    }
+
+    renderCounter(start, end){
+        return(
+            <h2><CountUp  
+                    start={this.state.viewPortEntered ? start : null} 
+                    end={end} duration={3.00} 
+                    redraw={true}>
+                    {({countUpRef}) => {
+                        return(<VisabilitySensor 
+                                active={!this.viewPortEntered}
+                                onChange={isVisible => {
+                                    if(isVisible){
+                                        this.setState({
+                                            viewPortEntered : true
+                                        })
+                                    }
+                                }}>
+                                    <h2 ref={countUpRef}></h2>
+                                </VisabilitySensor>)
+                                }}
+                    </CountUp>
+            </h2>
+        )
     }
     render(){
         return(
             <div>
                 <div className="overlay"></div>
-                <SimpleImageSlider className="slider" width={'100vw'} height={'100vh'} images={this.state.images} showBullets={true} slideDuration={0.5}/>
+                <SimpleImageSlider className="slider" width={'100vw'} height={'100vh'} images={this.state.images} showBullets={false} slideDuration={0.5}/>
                 
                 <div className="title-message">
                     <div className="heading">
@@ -50,6 +180,7 @@ class Portfolio extends Component{
                         <p className="sub typed">{this.state.typed}</p>
                     </div>
                 </div>
+
 
                 <div id="about" className="section">
                     <div className="container">
@@ -75,41 +206,120 @@ class Portfolio extends Component{
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <h2>Technical Skills</h2>
-                                <p>A representation of my proficiency in each skill</p>
-                            </div>
-                            <Carousel autoPlay={true} showArrows={true}> 
-                                <div>
-                                    <img alt="" src={Image1}></img>
-                                    <p className="legend">Legend 1</p>
+                                <div className="skills-wrapper">
+                                    {this.renderSkills()}
                                 </div>
-                                <div>
-                                    <img alt="" src={Image1}></img>
-                                    <p className="legend">Legend 1</p>
-                                </div>
-                                <div>
-                                    <img alt="" src={Image1}></img>
-                                    <p className="legend">Legend 1</p>
-                                </div>
-                                <div>
-                                    <img alt="" src={Image1}></img>
-                                    <p className="legend">Legend 1</p>
-                                </div>
-                                <div>
-                                    <img alt="" src={Image1}></img>
-                                    <div>Javascript</div>
-                                    <p className="legend">Legend 1</p>
-                                </div>
-
                                 
-                            </Carousel>
-                           
+                            </div> 
                         </div>
+                    </div>
+                </div>
+
+                <div id="stats" className="section stats-section">
+                    <div className="container">
+                        <div className="row">
+                           <div className="col-md-3 col-sm-6">
+                                <div className="square-item">
+                                    <div className="square-inner-container">
+                                        <div className="square-icon">
+                                            <FontAwesomeIcon icon={faCoffee}/>
+                                        </div>
+                                        <div className="square-content">
+                                            {this.renderCounter(0,36)}
+                                            <h3>Years Experience</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+
+                           <div className="col-md-3 col-sm-6">
+                                <div className="square-item">
+                                    <div className="square-inner-container">
+                                        <div className="square-icon">
+                                            <FontAwesomeIcon icon={faCoffee}/>
+                                        </div>
+                                        <div className="square-content">
+                                            {this.renderCounter(0,4)}
+                                            <h3>Years Experience</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+
+                           <div className="col-md-3 col-sm-6">
+                                <div className="square-item">
+                                    <div className="square-inner-container">
+                                        <div className="square-icon">
+                                            <FontAwesomeIcon icon={faCoffee}/>
+                                        </div>
+                                        <div className="square-content">
+                                            {this.renderCounter(0,15)}   
+                                            <h3>Years Experience</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+
+                           <div className="col-md-3 col-sm-6">
+                                <div className="square-item">
+                                    <div className="square-inner-container">
+                                        <div className="square-icon">
+                                            <FontAwesomeIcon icon={faCoffee}/>
+                                        </div>
+                                        <div className="square-content">
+                                            {this.renderCounter(0,255)}
+                                            <h3>Years Experience</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
                         
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contact" className=" section contact-section">
+                    <div className="col-md-12 text-center">
+                        <p className="sub-heading">Like what you see?</p>
+                        <h2>I'd love to hear from you!</h2>
+                        <a href="mailTo:tylerkonesky@hotmail.com" className="contact-button">GET IN TOUCH!</a>
+                    </div>
+
+                </div>
+
+                <div id="portfolio" className=" section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="heading">
+                                <h2> PORTFOLIO </h2>
+
+                            </div>
+                            {/* <div className="filter">
+                                <ul className="filters">
+                                    <li><button className="current" onClick={() =>{ this.setState({filter: 'All'})}}>ALL</button></li>
+                                    <li><button className="" onClick={() =>{ this.setState({filter: 'React'})}}>React</button></li>
+                                    <li><button className="" onClick={() =>{ this.setState({filter: 'Node'})}}>Node</button></li>
+                                    <li><button className="" onClick={() =>{ this.setState({filter: 'JavaScript'})}}>Javascript</button></li>
+                                </ul>
+                            </div> */}
+                            <div className="item-container">
+                                {this.renderProjects()}
+                            </div>
+
+                        </div>
 
                     </div>
-                    
-                    
                 </div>
+
+                <div className="copyright-section">
+                    <div className="col-md-12 text-center">
+                        <p>&copy; Copyright Tyler Konesky 2020</p>
+                    </div>
+                </div>
+
+
+
+
                 
             </div>
         )

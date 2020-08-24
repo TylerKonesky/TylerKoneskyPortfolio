@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import CountUp from 'react-countup';
 import VisabilitySensor from 'react-visibility-sensor';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 import SimpleImageSlider from 'react-simple-image-slider';
-
+import ReactStickyHeader from 'react-sticky-header';
 import Image1 from '../images/binary.jpg';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPhone, faAward, faBoxOpen, faBrain} from '@fortawesome/free-solid-svg-icons';
+import {faLinkedin, faGithubSquare, faJsSquare} from '@fortawesome/free-brands-svg-icons';
+
 import ProfilePic from '../images/atlanta.jpg';
 import Rox1 from '../images/rox-main.png';
 import Acousana from '../images/Acousana.png';
 import Taylorsville from '../images/Taylorsville.png'
 import Typed from 'typed.js';
 import './portfolio.css';
+
 
 
 
@@ -59,7 +62,7 @@ class Portfolio extends Component{
                 {type: 'Language', skill: "Java", proficiency: 'Beginner'},
                 {type: 'Language', skill: "Algorithms", proficiency: 'Beginner'},
                 {type: 'Framework', skill: "React", proficiency: 'Advanced'},
-                {type: 'Framework', skill: "Node", proficiency: 'Advanced'},
+                {type: 'Framework', skill: "NodeJS", proficiency: 'Advanced'},
                 {type: 'Framework', skill: "Express", proficiency: 'Advanced'},
                 {type: 'Framework', skill: "Angular", proficiency: 'Beginner'},
                 {type: 'Framework', skill: "Redux", proficiency: 'Advanced'},
@@ -68,7 +71,7 @@ class Portfolio extends Component{
                 {type: 'Software', skill: "Mongoose", proficiency: 'Advanced'},
                 {type: 'Software', skill: "RESTful API's", proficiency: 'Advanced'},
                 {type: 'Software', skill: "VS Code", proficiency: 'Intermediate'},
-                {type: 'Software', skill: "PostGreSQL", proficiency: 'Beginner'},
+                {type: 'Software', skill: "SQL", proficiency: 'Beginner'},
                 {type: 'Software', skill: "Git", proficiency: 'Intermediate'},
                 
             ]  
@@ -91,23 +94,22 @@ class Portfolio extends Component{
         return this.state.skills.map(skill =>{
             if(skill.proficiency === this.state.filter || this.state.filter === "All"){
                 return(
-                    <div className={skill.proficiency === "Advanced" ? "skills bold" : "skills"}>
+                    <div key={skill.skill} className={skill.proficiency === "Advanced" ? "skills bold" : "skills"}>
                         {skill.skill}
                     </div>
                 )
             }
+            return null;
         })
     }
-
-   
 
     renderProjects(){
         return this.state.projects.map(project =>{
                 return(
-                    <div className="project-wrapper">
+                    <div key={project.title} className="project-wrapper">
                         
                         <div className="image-wrapper">
-                            <img src={project.image}/>
+                            <img  alt={project.title} src={project.image}/>
                         </div>
                         <div className="content-wrapper">
                             
@@ -174,20 +176,41 @@ class Portfolio extends Component{
                     <div className="container">
                         <div className="row">
                             <div className="col-md-5">
-                                <img className="about-image" src={ProfilePic}/>
+                                <img alt="profile-pciture" className="about-image" src={ProfilePic}/>
                             </div>
                             <div className="col-md-7 about-content">
                                 <h4>About Me</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                </p>
+                                <p>
+                            I’m enthusiastic, innovative, and goal-oriented professional with a sharp technical acumen, internship-based experience software development, and keen programming and coding expertise. Having completed two Web Development Bootcamps from Bottega and DevMountain, I have refined my strengths in object oriented programming, data structures, and Agile development methodologies. With understanding of the fundamentals principle of software / web development, excellent communication talents, my resourcefulness, and collaborative approach position me ready to thrive in this challenging field.
+                            </p>
+                           
+                            <p>
+                            I’m instrumental in collaborating with designers, developers, clients, and other product stakeholders to enhance product features, functionality, and reliability. I have excellent communication, interpersonal, organizational, relationship building, and problem solving skills.
+                            </p>
                             </div>
+                           
+                            
+                        </div>
+                    </div>
+
+                </div>
+                    
+            {/* </div> */}
+
+                <ReactStickyHeader 
+                    header={
+                        <div className="Header_root header-wrapper">
+                            <ul className="links-wrapper">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#about" id="about">About Me</a></li>
+                                <li><a href="#skills" id="about">Skills</a></li>
+                                <li><a href="#contact" id="about">Contact Me</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                            </ul>
                         </div>
 
-                    </div>
-                    
-                </div>
+                    }
+                />
 
                 <div id="skills" className="section skills-section">
                     <div className="container">
@@ -210,10 +233,10 @@ class Portfolio extends Component{
                                 <div className="square-item">
                                     <div className="square-inner-container">
                                         <div className="square-icon">
-                                            <FontAwesomeIcon icon={faCoffee}/>
+                                            <FontAwesomeIcon icon={faBrain}/>
                                         </div>
                                         <div className="square-content">
-                                            {this.renderCounter(0,36)}
+                                            {this.renderCounter(0,3)}
                                             <h3>Years Experience</h3>
                                         </div>
                                     </div>
@@ -224,11 +247,11 @@ class Portfolio extends Component{
                                 <div className="square-item">
                                     <div className="square-inner-container">
                                         <div className="square-icon">
-                                            <FontAwesomeIcon icon={faCoffee}/>
+                                            <FontAwesomeIcon icon={faAward}/>
                                         </div>
                                         <div className="square-content">
-                                            {this.renderCounter(0,4)}
-                                            <h3>Years Experience</h3>
+                                            {this.renderCounter(0,38)}
+                                            <h3>Projects Completed</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -238,11 +261,11 @@ class Portfolio extends Component{
                                 <div className="square-item">
                                     <div className="square-inner-container">
                                         <div className="square-icon">
-                                            <FontAwesomeIcon icon={faCoffee}/>
+                                            <FontAwesomeIcon icon={faBoxOpen}/>
                                         </div>
                                         <div className="square-content">
                                             {this.renderCounter(0,15)}   
-                                            <h3>Years Experience</h3>
+                                            <h3>Certificates/Coursres</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -252,11 +275,11 @@ class Portfolio extends Component{
                                 <div className="square-item">
                                     <div className="square-inner-container">
                                         <div className="square-icon">
-                                            <FontAwesomeIcon icon={faCoffee}/>
+                                            <FontAwesomeIcon icon={faJsSquare}/>
                                         </div>
                                         <div className="square-content">
-                                            {this.renderCounter(0,255)}
-                                            <h3>Years Experience</h3>
+                                            {this.renderCounter(0,48)}
+                                            <h3>CodeWars Challenges</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -266,13 +289,20 @@ class Portfolio extends Component{
                     </div>
                 </div>
 
+
+
                 <div id="contact" className=" section contact-section">
                     <div className="col-md-12 text-center">
                         <p className="sub-heading">Like what you see?</p>
                         <h2>I'd love to hear from you!</h2>
                         <a href="mailTo:tylerkonesky@hotmail.com" className="contact-button">GET IN TOUCH!</a>
+                        <div className="secondary-links">
+                            <a href="https://www.linkedin.com/in/tylerkonesky/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin}/></a>
+                            <a href="https://github.com/TylerKonesky" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithubSquare}/></a>
+                            <a className="link-phone"><FontAwesomeIcon className="link-phone" icon={faPhone}/></a>
+                            <a className="phone-number">801-471-8600</a>                          
+                        </div>
                     </div>
-
                 </div>
 
                 <div id="portfolio" className=" section">
@@ -280,7 +310,6 @@ class Portfolio extends Component{
                         <div className="row">
                             <div className="heading">
                                 <h2> Portfolio </h2>
-
                             </div>
                             <div className="item-container">
                                 {this.renderProjects()}
@@ -290,6 +319,8 @@ class Portfolio extends Component{
 
                     </div>
                 </div>
+
+
 
                 <div className="copyright-section">
                     <div className="col-md-12 text-center">

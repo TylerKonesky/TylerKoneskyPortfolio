@@ -5,6 +5,27 @@ body{
     letter-spacing: 1px;;
 }
 
+.header-wrapper{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.links-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-end;
+    list-style: none;
+    width: 80vw;
+}
+.links-wrapper a{
+    font-size: 20px;
+    color: #102542;
+}
+
 .image-slider button{
     z-index: 10;
 }
@@ -51,7 +72,7 @@ body{
 }
 
 .about-content{
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .about-content h4{
@@ -64,7 +85,7 @@ body{
 }
 
 .about-content p{
-    padding-top: 5%;
+    padding-top: 0%;
     padding-left: 10%;
     color: #828282;
 }
@@ -163,6 +184,28 @@ body{
     text-decoration: none;
     color: #3e6990;
     background-color: #fff;
+}
+
+.secondary-links{
+    margin-top: 20px;
+    color: #fff;
+}
+
+.secondary-links a{
+    color: #fff;
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 20px;
+}
+.secondary-links .link-phone{
+    font-size: 28px;
+    margin-right: -10px;
+}
+
+
+.phone-number:hover{
+    text-decoration: none;
+    
 }
 
 .section .heading {

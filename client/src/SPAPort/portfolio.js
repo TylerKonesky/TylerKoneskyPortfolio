@@ -265,7 +265,7 @@ class Portfolio extends Component{
                                         </div>
                                         <div className="square-content">
                                             {this.renderCounter(0,15)}   
-                                            <h3>Certificates/Coursres</h3>
+                                            <h3>Certificates/Courses</h3>
                                         </div>
                                     </div>
                                 </div>
